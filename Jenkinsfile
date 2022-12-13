@@ -26,6 +26,7 @@ pipeline {
                  sh 'docker push thiru/nodeapp:$BUILD_NUMBER'
              }
          }
+         }
 }
 post {
         always {
