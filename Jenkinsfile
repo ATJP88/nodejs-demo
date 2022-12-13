@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "docker-hub" }
+    agent { label "staging-preprod" }
     environment {
     DOCKERHUB_CREDENTIALS = credentials('docker-hub')
     }
