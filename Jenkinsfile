@@ -18,14 +18,14 @@ pipeline {
         stage('login to dockerhub') {
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push thiru/nodeapp:$BUILD_NUMBER'
             }
         }
-//         stage('push image') {
-//             steps{
-//                 sh 'docker push thiru/nodeapp:$BUILD_NUMBER'
-//             }
-//         }
+         stage('push image') {
+         withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
+            steps{
+                 sh 'docker push thiru/nodeapp:$BUILD_NUMBER'
+             }
+         }
 }
 post {
         always {
