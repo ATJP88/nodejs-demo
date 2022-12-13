@@ -22,10 +22,10 @@ pipeline {
         }
          stage('push image') {
          steps{
-         withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
+                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                  sh 'docker push thiru/nodeapp:$BUILD_NUMBER'
              }
-         }
+      
          }
 }
 post {
