@@ -22,10 +22,8 @@ pipeline {
         }
          stage('push image') {
          withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
-            steps{
                  sh 'docker push thiru/nodeapp:$BUILD_NUMBER'
              }
-         }
          }
 }
 post {
